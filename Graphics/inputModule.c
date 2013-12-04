@@ -154,7 +154,7 @@ void mouseMoveHandler( int x, int y ){
 
 //operation on the sun;
 void setUserView( ){
-  glLoadIdentity( );
+  //glLoadIdentity( );
   myGL_loadIdentity();
 
   //gluLookAt( viewX,viewY,distance,0.0,0.0,0.0,0.0,1.0,0.0 );

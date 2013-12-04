@@ -78,9 +78,9 @@ void initDisplay( ){
   myGL_loadIdentity();
   myGL_gluPerspective(pD.fieldOfView, pD.aspect, pD.nearPlane, pD.farPlane);
 
-  double top_m[16];
-  memcpy(top_m,top(),sizeof(double) * 16);
-  glLoadMatrixd(top_m);
+  //double top_m[16];
+  //memcpy(top_m,top(),sizeof(double) * 16);
+  glLoadMatrixd(top());
 
   glEnable(GL_DEPTH_TEST);
   glDisable( GL_CULL_FACE );
@@ -91,6 +91,7 @@ void initDisplay( ){
 
   glMatrixMode( GL_MODELVIEW );
   myGL_glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
 
 }
 

@@ -1,5 +1,6 @@
 #include<iostream>
 #include<math.h>
+#include <GL/glut.h>
 
 #define GL_MODELVIEW                      0x1700
 #define GL_PROJECTION                     0x1701
@@ -96,6 +97,7 @@ extern "C" void myGL_loadIdentity() {
 		//stack[topNum - 1][i] = *(I + i);
 
 	memcpy(stack[s_choice][topNum - 1], I, sizeof(double)* MATRIX_SIZE);
+	glLoadMatrixd(top());
 }
 
 //replace current matrix with m
@@ -106,6 +108,7 @@ extern "C" void myGL_loadMatrix(const double* m) {
 	//for (int i = 0; i < MATRIX_SIZE; i++)
 		//stack[topNum - 1][i] = *(m + i);
 	memcpy(stack[s_choice][topNum - 1], m, sizeof(double)* MATRIX_SIZE);
+	glLoadMatrixd(top());
 }
 
 //multiply the current matrix by m, and replace the current matrix with product
@@ -203,6 +206,7 @@ extern "C" void myGL_gluPerspective(double fovy, double aspect, double zNear, do
 		}
 	myGL_multMatrix(mat);
 #endif
+	glLoadMatrixd(top());
 }
 
 //multiply current matrix by translation matrix given by parameters x, y, z
@@ -210,6 +214,7 @@ extern "C" void myGL_translate(double x, double y, double z) {
 	 double m[] = {1,0,0,0,0,1,0,0,0,0,1,0,x,y,z,1};
 
 	myGL_multMatrix(m);
+	glLoadMatrixd(top());
 }
 
 //multiply current matrix by scale matrix given by parameters x, y, z
@@ -217,6 +222,7 @@ extern "C" void myGL_scale(double x, double y, double z) {
 	 double m[] = {x,0,0,0,0,y,0,0,0,0,z,0,0,0,0,1};
 
 	myGL_multMatrix(m);
+	glLoadMatrixd(top());
 }
 
 
@@ -237,6 +243,7 @@ extern "C" void myGL_rotated(double angle, double x, double y, double z) {
 
 
 	myGL_multMatrix(m);
+	glLoadMatrixd(top());
 }
 
 
@@ -261,6 +268,7 @@ extern "C" void myGL_lookAt(double eyeX, double eyeY, double eyeZ, double center
 
 		myGL_multMatrix(m);
 		myGL_translate(-eyeX, -eyeY, -eyeZ);
+		glLoadMatrixd(top());
 }
 
 

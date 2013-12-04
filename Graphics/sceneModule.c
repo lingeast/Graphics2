@@ -59,7 +59,7 @@ static float cubeVertexes[6][4][4] =
 //draw sun
 void drawScene( ){
 
-	glLoadMatrixd(top());
+	//glLoadMatrixd(top());
 
   for (int i = 0; i < 6; ++i) {
 	if (i % 2 == 0)
@@ -77,7 +77,7 @@ void drawScene( ){
 
 //draw earth
 void drawScene_earth() {
-	glLoadMatrixd(top());
+	//glLoadMatrixd(top());
 
 	glColor3fv(&cubeColors[2][0]);
 
@@ -99,7 +99,7 @@ void drawScene_earth() {
 
 //draw moon
 void drawScene_moon() {
-	glLoadMatrixd(top());
+	//glLoadMatrixd(top());
 
 	glColor3fv(&cubeColors[2][0]);
 
